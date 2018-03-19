@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BerlinClock.Classes.Interfaces;
 
-namespace BerlinClock
+namespace BerlinClock.Classes
 {
     public class TimeConverter : ITimeConverter
     {
-        
-        public string convertTime(string aTime)
+        private readonly IClock berlinClock;
+        public TimeConverter()
         {
-            var berlinClock = new Classes.Clock();
+            berlinClock = new Clock();
+        }
+
+        public string ConvertTime(string aTime)
+        {
             berlinClock.SetTime(aTime);
             return berlinClock.ToString();
         }

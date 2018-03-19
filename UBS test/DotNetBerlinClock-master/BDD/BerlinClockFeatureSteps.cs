@@ -1,9 +1,10 @@
 ﻿using System;
-using TechTalk.SpecFlow;
+using BerlinClock.Classes;
+using BerlinClock.Classes.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
+using TechTalk.SpecFlow;
 
-namespace BerlinClock
+namespace BerlinClock.BDD
 {
     [Binding]
     public class TheBerlinClockSteps
@@ -21,7 +22,7 @@ namespace BerlinClock
         [Then(@"the clock should look like")]
         public void ThenTheClockShouldLookLike(string theExpectedBerlinClockOutput)
         {
-            Assert.AreEqual(berlinClock.convertTime(theTime), theExpectedBerlinClockOutput);
+            Assert.AreEqual(berlinClock.ConvertTime(theTime), theExpectedBerlinClockOutput);
         }
 
     }

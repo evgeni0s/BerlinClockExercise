@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BerlinClock.Classes.Enums;
+using BerlinClock.Classes.Res;
 
 namespace BerlinClock.Classes
 {
@@ -17,7 +15,7 @@ namespace BerlinClock.Classes
             this.secondaryColor = secondaryColor;
             if (secondaryColorAlteration <= 0)
             {
-                throw new ArgumentException("ClockRow: Value must be greater then 0", nameof(maxCellValue));
+                throw new ArgumentException(ErrorMessages.Value_must_be_greater_then_0, nameof(maxCellValue));
             }
             this.secondaryColorAlteration = secondaryColorAlteration;
         }

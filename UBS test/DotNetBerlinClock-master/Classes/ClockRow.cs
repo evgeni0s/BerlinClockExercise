@@ -1,51 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BerlinClock.Classes.Enums;
+using BerlinClock.Classes.Interfaces;
+using BerlinClock.Classes.Res;
 
 namespace BerlinClock.Classes
 {
-    public class ClockRow
+    public class ClockRow : IClockRow
     {
         protected readonly Color[] lights;
         protected readonly Color primaryColor;
-        protected readonly int maxCellValue;
+        protected readonly int cellSize;
 
-        public ClockRow(int numberOfLights, int maxCellValue, Color primaryColor)
+        public ClockRow(int numberOfLights, int cellSize, Color primaryColor)
         {
             if (numberOfLights <= 0)
             {
-                throw new ArgumentException("ClockRow: Value must be greater then 0", nameof(numberOfLights));
+                throw new ArgumentException(ErrorMessages.Value_must_be_greater_then_0, nameof(numberOfLights));
             }
-            if (maxCellValue <= 0)
+            if (cellSize <= 0)
             {
-                throw new ArgumentException("ClockRow: Value must be greater then 0", nameof(maxCellValue));
+                throw new ArgumentException(ErrorMessages.Value_must_be_greater_then_0, nameof(cellSize));
             }
             lights = new Color[numberOfLights];
             this.primaryColor = primaryColor;
-            this.maxCellValue = maxCellValue;
+            this.cellSize = cellSize;
         }
 
         public virtual int Fill(int time)
         {
             if (time < 0)
             {
-                throw new ArgumentException("ClockRow: Value must be positive", nameof(time));
+                throw new ArgumentException(ErrorMessages.Value_must_be_positive, nameof(time));
             }
             ResetLights();
 
-            var numOfCellsRequestedToFill = time / maxCellValue;
+            var numOfCellsRequestedToFill = time / cellSize;
             var cellsToHilight = numOfCellsRequestedToFill > lights.Length ? lights.Length : numOfCellsRequestedToFill;
             for (int i = 0; i < cellsToHilight; i++)
             {
                 Hilight(i);
             }
-            var remainder = time - cellsToHilight * maxCellValue;
+            var remainder = time - cellsToHilight * cellSize;
             return remainder;
         }
         
-
         protected virtual void Hilight(int index)
         {
             if(index > -1 && index < lights.Length)
@@ -66,7 +65,7 @@ namespace BerlinClock.Classes
                 case Color.Red:
                     return "R";
             }
-            throw new Exception($"Error converting color to string. Unexpected color {color}");
+            throw new ArgumentException(ErrorMessages.Error_Converting_Color_To_String_Unexpected_Color + color, nameof(color));
         }
 
         public override string ToString()

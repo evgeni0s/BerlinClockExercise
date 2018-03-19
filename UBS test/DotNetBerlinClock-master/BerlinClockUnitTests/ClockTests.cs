@@ -1,5 +1,6 @@
 ﻿using System;
 using BerlinClock.Classes;
+using BerlinClock.Classes.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BerlinClockUnitTests
@@ -7,12 +8,19 @@ namespace BerlinClockUnitTests
     [TestClass]
     public class ClockTests
     {
+        private IClock stu;
+
+        [TestInitialize]
+        public void Initiallize()
+        {
+            stu = new Clock();
+        }
+
         [TestMethod]
         public void TestsIfSetTimeCanParseValidTime()
         {
-            var clock = new Clock();
-            clock.SetTime(DateTime.Now.ToString());
-            var result = clock.ToString();
+            stu.SetTime(DateTime.Now.ToString());
+            var result = stu.ToString();
             Assert.IsNotNull(result);
             Assert.IsFalse(result == string.Empty);
         }
@@ -20,9 +28,8 @@ namespace BerlinClockUnitTests
         [TestMethod]
         public void TestsIfSetTimeCanParseMidninght24()
         {
-            var clock = new Clock();
-            clock.SetTime("24:00:00");
-            var result = clock.ToString();
+            stu.SetTime("24:00:00");
+            var result = stu.ToString();
             Assert.IsNotNull(result);
             Assert.IsFalse(result == string.Empty);
         }
@@ -31,8 +38,7 @@ namespace BerlinClockUnitTests
         [ExpectedException(typeof(Exception), "2400:00 Is not a valid date format")]
         public void TestsIfSetTimeThrowsException()
         {
-            var clock = new Clock();
-            clock.SetTime("2400:00");
+            stu.SetTime("2400:00");
         }
     }
 }

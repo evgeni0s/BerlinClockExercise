@@ -1,8 +1,0 @@
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\bin\Debug\BerlinClock.dll.config
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\bin\Debug\BerlinClock.dll
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\bin\Debug\BerlinClock.pdb
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\bin\Debug\TechTalk.SpecFlow.dll
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\obj\Debug\BerlinClock.csproj.CoreCompileInputs.cache
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\obj\Debug\BerlinClock.dll
-C:\Users\ievgen_Gunkov\Desktop\UBS test\DotNetBerlinClock-master\obj\Debug\BerlinClock.pdb
